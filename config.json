@@ -1,0 +1,39 @@
+{
+  "url": "https://hayyanabnee.com",
+  "domain": "https://hayyanabnee.com",
+  "dir": "/home/andreas/NodeJS",
+  "paths": {
+    "strings": "strings/",
+    "routes": "/routes/",
+    "static": "/static",
+    "globalTemplatePath":"/templates/global/",
+    "localTemplatePath":"/templates/local/",
+    "socket.io": "/socket.io/"
+  },
+  "ports":{
+    "http":80,
+    "https":443,
+    "discussion":9324
+  },
+  "cookie":{
+    "distantExpiryDate": "01-Jan-2100 GMT",
+    "pastDate": "01-Jan-2000 GMT"
+  },
+  "mimeTypes":{
+    "template":["text/html", "text/css", "application/javascript"],
+    "string": ["application/json"],
+    "none": "application/octet-stream"
+  },
+  "locales" : ["en", "ar"],
+  "accountDefaults":{
+    "tokens": []
+  },
+  "sessionDurationMinutes": 10,
+  "accountCreationLinkDurationDays": 30,
+  "defaultStringLimit": 50,
+  "mailingAddress": "noreply@hayyanabnee.com",
+  "projectListChunkSize": 10,
+  "messageListChunkSize": 20,
+  "messageListReplyChunkSize": 5,
+  "daysToDisplayStartedProjects": 3
+}

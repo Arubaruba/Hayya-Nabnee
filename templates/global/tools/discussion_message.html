@@ -1,0 +1,30 @@
+{% strings 'discussion.json' %}
+<div class="message" id="{{message._id+''}}">
+  <div class="inner_message_border">
+    <div class="title">
+      {{message.author.fullName}}
+      <span class="post_date">{{descriptiveDate(message.posted)}}</span>
+    </div>
+    <div class="body">
+      {{message.body}}
+    </div>
+  </div>
+  <div class="post_message">
+    <textarea onresizeend="console.log(1234)" onfocus="messageContentFocused(this)" id="message_content" placeholder="{{l.replyDotDotDot}}"></textarea>
+    <div class="input_bar">
+      <a onclick="postMessage(this);closePost(this)" class="button small_button">{{l.reply}}</a>
+      <a onclick="closePost(this)" name="cancel" class="button small_button">{{l.cancel}}</a>
+      <meta message_id="{{message._id+''}}">
+    </div>
+  </div>
+  <div {% if altStyle %} alt_style {% endif %} class="shift_over">
+    {#
+      Since this template can be used alone or inside the discussion frame
+      it will only need to render it's replies (scan 'messages' for replies)
+      if is being rendered as part of the frame
+    #}
+    {% if messages %}
+      {{renderMessagesRecursively(message._id+'', !altStyle)|safe}}
+    {% endif %}
+  </div>
+</div>

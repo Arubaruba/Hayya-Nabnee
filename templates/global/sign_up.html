@@ -1,0 +1,44 @@
+{% extends 'g/layout.html' %}
+
+{% block head %}
+{% include 'g/macros/fields.html' %}
+{% include 'l/errors.html' %}
+{% strings 'fields.json' 'errors.json' 'sign_up.json' %}
+<link type="text/css" rel="stylesheet" href="/css/forms">
+<script src="/js/form"/></script>
+<script>
+
+{% set minPasswordLength = 8 %}
+
+var minPasswordLength = {{minPasswordLength}};
+
+var formConfig = {
+  clientValidation : function (form, inputs){
+
+    var shortestPassword = Math.min(inputs.password[0].length, inputs.password[1].length);
+
+    return {
+      password: [{
+        condition: inputs.password[0] != inputs.password[1],
+        message: '{{l.passwordsDoNotMatch}}',
+      },{
+        condition: shortestPassword > 0 && shortestPassword < {{minPasswordLength}},
+        message: '{{passwordTooShort(minPasswordLength)}}',
+      }],
+    };
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>{{l.signUp}}</h1>
+<form class="inner_content_480 form-1" onsubmit="submitForm(this, '/sign_up/query'); return false">
+  <div class="descriptive_link">
+    {{l.existingAccount}} 
+    <a href="/sign_in">{{l.signIn}}</a>
+  </div>
+  {{inputFields(fields)}}
+  <input class="right button" type="submit" value="{{l.signUp}}">
+</form>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'g/layout.html' %}
+
+{% block head %}
+{% strings 'project.json' 'fields.json' %}
+<link type="text/css" rel="stylesheet" href="/css/project">
+<link type="text/css" rel="stylesheet" href="/css/lists">
+<script src="/js/project"/></script>
+{% endblock %}
+
+{% block content %}
+<div class="inner_content_940">
+  <h2>{{limitLength(project.title, 40)}}
+    <span class="right date">
+      {{descriptiveDate(project.startingDate)}}<br>
+      <span class="exact_date">{{getDate(project.startingDate)|date('d/m/Y')}}</span>
+    </span><br>
+    <span class="host_info">
+      {{l.hostedBy}}
+      <a class="link" href="/profile/{{project.community._id + ''}}">{{project.community.fullName}}</a>
+      <br>
+      <span volunteering="{{project.accountIsVolunteer}}" class="volunteer_involvment_status">
+        {% include 'l/volunteer_involvement_status.html' with project  %}
+      </span>
+    </span>
+  </h2>
+
+  {% if s.account.type != 'community' %}
+
+  <div id="toggle_participation" class="div-1">
+    <h4>{{l.volunteeringRequirements}}</h4>
+    {% include 'l/volunteering_requirements.html' %}
+    <div class="agreement_box">
+      {{checkBox('agree_to_requirements', '', project.accountIsVolunteer,project.accountIsVolunteer)}} {{l.agreeToConditions}}
+    </div>
+
+    <div id="toggle_participation" class="div-1">
+      {% if project.accountIsVolunteer %}
+      <a id="leave_project" class="button">{{l.leaveProject}}</a>
+      {% else %}
+      <a id="join_project" class="button">{{l.joinProject}}</a>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="div-1">
+    <table class="split_textarea">
+      <tr>
+        <td>
+          <h4>{{l.projectDescription}}</h4>
+          {{project.description}}
+        </td>
+        <td>
+          <h4>{{l.projectLocation}}</h4>
+          {{project.location}}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="div-1" style="display:none">
+    <h3>{{l.discussion}}</h3>
+    {#discussion|safe#}
+  </div>
+</div>
+{% endblock %}

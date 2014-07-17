@@ -1,0 +1,48 @@
+{% strings 'layout.json' %}
+<style>
+.inner_content_640{
+  width:480px;
+  margin:0 auto;
+  text-align:{{left}};
+}
+body{
+  width:100%;
+  padding:0 0 70px 0;
+  margin:0;
+  font-size:23px;
+  color:#333;
+  background:#fff;
+  font-family:Arial;
+}
+.link{
+  color:#0078b9;
+  font-size:30px;
+}
+.website_title_area{
+  text-align:center;
+  padding:60px;
+  background:#61A10D;
+}
+.website_title_area > .title{
+  color:#333;
+  text-decoration:none;
+  font-size:75px;
+  font-weight:bold;
+}
+.website_title_area > .slogan{
+  color:#fff;
+  font-size:30px;
+  font-weight:bold;
+}
+.content{
+  line-height:30px;
+  padding:20px;
+}
+</style>
+<div class="website_title_area">
+  <a href="{{s.config.url}}" class="title">{{l.websiteName}}</a><br>
+  <span class="slogan">{{l.slogan|safe}}</span>
+</div>
+<div class="content">
+{% block content %}{% endblock %}
+</div>

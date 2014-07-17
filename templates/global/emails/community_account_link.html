@@ -1,0 +1,11 @@
+{% extends 'g/emails/layout.html' %}
+{% block content %}
+<div class="inner_content_640">
+  {% strings 'admin.json' %}
+  {% include 'l/emails/community_account_link.html' %}
+  <br><br>
+  <a class="link" href="{{link}}">
+    {{l.createCommunityAccount}}
+  </a>
+</div>
+{% endblock %}

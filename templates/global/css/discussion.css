@@ -1,0 +1,75 @@
+.post_message {
+  width:300px;
+  margin-bottom:10px;
+}
+.post_message textarea{
+  margin-top:5px;
+  width: 150px;
+  background:#f3f3f3;
+  border:none;
+  color:#333;
+  font-size:14px;
+  font-family:Arial;
+  line-height:20px;
+  height:21px;
+  padding:2px;
+}
+.post_message textarea[expanded]{
+  background:#dfdfdf;
+  width: 280px;
+  height:200px;
+  padding:10px;
+  font-size:18px;
+}
+.post_message .small_button{
+  margin:0 5px 20px 5px;
+  width:70px;
+  text-align:center;
+  padding: 3px;
+  font-size:17px;
+  float:{{right}};
+}
+.post_message .small_button:first-child{
+  margin-{{right}}:0;
+}
+.post_message textarea[expanded]~.input_bar{
+  display:block;
+}
+.input_bar{
+  padding-top:10px;
+  display:none;
+  height:20px;
+}
+.message{
+  margin:5px 0;
+  width:300px;
+  padding:0 10px;
+  font-size:18px;
+}
+.message .title{
+  line-height:20px;
+  font-weight:bold;
+}
+.message .body{
+  margin-top:10px;
+}
+h3#new_message{
+  font-weight:bold;
+  font-size:26px;
+  margin:10px 0 20px 0;
+}
+.message .shift_over{
+  border-{{left}}:1px dotted #0078b9;
+}
+.message .shift_over[alt_style]{
+  border-color:#b2d6ea;
+}
+#write_reply{
+  display:none;
+  margin-bottom:45px;
+}
+.message .post_date{
+  float:{{right}};
+  font-size:15px;
+  color:#ccc;
+}

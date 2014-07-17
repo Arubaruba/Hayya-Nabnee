@@ -1,0 +1,84 @@
+Bugs:
+  automatic signout does not occur after certain time period
+
+Features needed:
+
+Needed for beta:
+
+  more sensible names -
+    project, project-list, index are confusing
+
+  more reused code
+  comments
+    > Look through all the code
+
+  Community Dashboard
+  Volunteer Dashboard 
+  Project chat
+
+Not Needed for beta:
+  Gzip compression
+  Volunteer Profiles
+
+Previous Problems
+
+-Localization can not support long text well
+-MySQL code was stored in an awkward way
+-Lack of reusable Code (Especially for UI Components)
+-Swig blocks and layouts not used
+-No project map
+
+Website Map
+
+> Home
+  > Create Account
+    > Sign In
+      > My Profile
+        > Account Options
+      > Project List (Home)
+        > Project
+          [Project Info{Project Start/End Date, Project Description, Project Location,
+          Community (Link to Profile), Number of Volunteers, Project Status}, ? Served as Volunteer > ? Attended Project (Recommend / Not Recommened)
+          ? Project Finished (Project Requirements, Join Project),
+          Comments ? Volunteered (Add Star "Volunteered")]
+
+          > Community Profile [Projects Served, Member Since]
+          > Volunteer Profile [Projects Created, Volunteers Enlisted, Recommended (?/?), Background Information (Optional)]
+      > Forum
+        > Ask a Question
+
+Under the Hood
+
+Home Dir:
+  Core/
+    > Index.js
+    > Session.js
+    > Config.json
+  Static/
+    > Default.js
+  Templates/
+    > CSS/
+    > Localized_Texts/
+      > en/
+        > Sign_In.json
+        > Create_Account.json
+        > Project.json
+      > ar/
+        > Sign_In.json
+        > Create_Account.json
+        > Project.json
+    > Widgets/
+      > Form.html
+      > Table.html
+    > Layout.html
+    > Sign_In.html
+    > Create_Account.html
+    > Project.html
+  Views/
+    > Home.js
+    > Sign_In.js
+    > Create_Account.js
+    > Project.js
+    > Volunteer_Profile.js
+    > Community_Profile.js
+  Node_Modules/

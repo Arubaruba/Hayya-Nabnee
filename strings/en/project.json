@@ -1,0 +1,27 @@
+{
+  "buildingProjects": "Building Projects",
+  "noVolunteers": "No volunteers yet",
+  "volunteers": "Volunteers",
+  "beginProject": "Begin Project",
+  "noMoreProjects": "No more projects to load",
+
+  "hostedBy": "Hosted by",
+  "begins": "Begins",
+  "started": "Started",
+
+  "beginProject": "Begin Project",
+  "projectTitle": "Project Title",
+  "projectDescription": "Project Description",
+  "projectLocation": "Project Location",
+  "startingDate": "Starting Date",
+  "joinProject": "Join this project as a volunteer",
+  "volunteeringRequirements": "Volunteering Requirements",
+  "hostInformation": "Host Information",
+  "agreeToConditions": "I agree to these conditions",
+  "involvedInProject": "I&#39;m involved in this project",
+  "leaveProject": "Leave Project",
+  "volunteeringForProject": "Volunteering for this project",
+  "discussion": "Discussion",
+  "completeProject": "Complete Project",
+  "editVolunteerAttendence": "Edit Volunteer Attendence"
+}

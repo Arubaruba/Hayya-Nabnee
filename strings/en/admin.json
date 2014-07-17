@@ -1,0 +1,10 @@
+{
+  "adminTools": "Admin Tools",
+  "communityEmailAddress": "Community Email Address",
+  "linkWillBeSent": "A link for creating a new community account will be sent to this address",
+  "sendLink": "Send Link",
+  "invalidEmail": "Invalid email address",
+  "communityLink": "Community Account Creation Link",
+  "linkSent": "Link has been sent",
+  "createCommunityAccount": "Create community account"
+}

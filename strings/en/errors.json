@@ -1,0 +1,22 @@
+{
+  "back": "Back",
+  "stylesheetMissing": "No stylesheet could be found at this path",
+  "scriptMissing": "No javascript could be found at this path",
+  "staticFileMissing": "No file could be found at this path",
+  "invalidURL": "Invalid URL",
+  "streamingError": "Streaming Error",
+  "emptyField": "Field is empty",
+  "emailOrPasswordIncorrect": "Incorrect Email or Password",
+  "passwordsDoNotMatch": "Passwords do not match",
+  "unableToConnect": "Unable to connect",
+  "emailTaken": "An account with this email address already exists",
+  "invalidCredentials": "Wrong login info",
+  "unknownError": "Unknown error",
+  "accessDenied": "Access Denied",
+  "expiredLink": "Expired Link",
+  "datePassed": "This date is in the past",
+  "invalidDay": "Day should be between 1 and 31",
+  "invalidMonth": "Month should be between 1 and 12",
+  "projectNotFound": "Project not found",
+  "profileNotFound": "Profile not found"
+}

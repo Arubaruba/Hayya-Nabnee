@@ -1,0 +1,30 @@
+{
+  "second":{
+    "singular": "الثانية",
+    "plural": "الثواني"
+  },
+  "minute":{
+    "singular": "الدقيقة",
+    "plural": "الدقائق"
+  },
+  "hour":{
+    "singular": "الساعة",
+    "plural": "الساعات"
+  },
+  "day":{
+    "singular": "اليوم",
+    "plural": "الايام"
+  },
+  "week":{
+    "singular": "الأسبوع",
+    "plural": "الاسابيع"
+  },
+  "month":{
+    "singular": "الشهر",
+    "plural": "الاشهر"
+  },
+  "year":{
+    "singular": "السنة",
+    "plural": "السنوات"
+  }
+}

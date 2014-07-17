@@ -1,0 +1,37 @@
+{% extends 'g/layout.html' %}
+
+{% block head %}
+{% strings 'errors.json' %}
+
+<style>
+.error_message{
+  font-size:35px;
+  margin-top:50px;
+}
+.error_info{
+  color:#808080;
+  font-size:20px;
+  padding:20px;
+  margin-bottom:60px;
+}
+a.back{
+  font-size:35px;
+  color:#0078b9;
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="error_message">
+{{errorMessage}}
+</div>
+
+<div class="error_info">
+{{errorInfo}}
+</div>
+
+<a class="back" href="javascript:history.go(-1)">{{l.back}}</a>
+
+{% endblock %}

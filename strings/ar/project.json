@@ -1,0 +1,27 @@
+{
+  "buildingProjects": "بناء مشاريع",
+  "noVolunteers": "لا يوجد متطوعين لغاية الآن",
+  "volunteers": "المتطوعين",
+  "beginProject": "بدء المشروع",
+  "noMoreProjects": "لا يوجد المزيد من المشاريع لتحميلها",
+
+  "hostedBy": "استضافت من قبل",
+  "begins": "يبدأ",
+  "started": "بدأ",
+
+  "beginProject": "بدء المشروع",
+  "projectTitle": "عنوان المشروع",
+  "projectDescription": "تفاصيل المشروع",
+  "projectLocation": "موقع المشروع",
+  "startingDate": "يوم بدء العمل",
+  "joinProject": "انضمام الى المشروع كمتطوع",
+  "volunteeringRequirements": "متطلبات التطوع",
+  "hostInformation": "معلومات المستضيف",
+  "agreeToConditions": "اوافق على هذه الشروط",
+  "involvedInProject": "مشارك في هذا المشروع",
+  "leaveProject": "مغادرة المشروع",
+  "volunteeringForProject": "التطوع لهذا المشروع",
+  "discussion": "مناقشة",
+  "completeProject": "انهاء المشروع",
+  "editVolunteerAttendence": "تعديل حضور المتطوعين"
+}

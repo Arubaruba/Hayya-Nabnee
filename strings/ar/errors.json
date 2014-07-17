@@ -1,0 +1,22 @@
+{
+  "back": "الرد",
+  "stylesheetMissing": "لا يمكن العثور على ورقة انماط في هذا المسار",
+  "scriptMissing": "لا يمكن العثور على جافا سكريبت في هذا المسار",
+  "staticFileMissing": "لا يمكن العثور على ملف في هذا المسار",
+  "invalidURL": "مسار غير صالح",
+  "streamingError": "التدفق خاطئ",
+  "emptyField": "الحقل فارغ",
+  "emailOrPasswordIncorrect": "الأيميل او الرقم السري غير صحيح",
+  "passwordsDoNotMatch": "الرقم السري غير مطابق",
+  "unableToConnect": "ثعذر الاتصال",
+  "emailTaken": "الحساب مع البريد الالكتروني موجود من قبل",
+  "invalidCredentials": "معلومات الدخول خاطئة",
+  "unknownError": "خطأ غير معروف",
+  "accessDenied": "رفض الوصول",
+  "expiredLink": "الرابط غير متوفر",
+  "datePassed": "هذا التاريخ اصبح بالماضي",
+  "invalidDay": "الأيام يجب ان تكون بين 1 و 31",
+  "invalidMonth": "الأشهر يجب ان تكون بين 1 و 12",
+  "projectNotFound": "المشروع غير موجود",
+  "profileNotFound": "الصفحة غير موجودة"
+}

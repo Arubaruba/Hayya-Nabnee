@@ -1,0 +1,42 @@
+h2{
+	margin:30px 0;
+}
+h3{
+	margin:20px 0 10px 0;
+}
+.back{
+  color:#0078b9;
+}
+.table-projects{
+  padding:0;
+  width:100%;
+}
+.table-projects tr td{
+  padding:10px 0;
+  border-bottom: 1px dotted #ccc;
+}
+.table-projects tr td.project_title{
+  width:40%;
+}
+.table-projects tr td.starting_date{
+  width:30%;
+}
+.table-projects tr:last-of-type td{
+  border:none;
+}
+.project_title:hover{
+  color:#0078b9;
+}
+.date_volunteering{
+  color:#0078b9;
+}
+.volunteer_involvment_status{
+  font-weight:bold;
+}
+.volunteer_involvment_status[volunteering=true]{
+  color:#0078b9;
+}
+#load_completed_projects{
+  font-size:18px;
+  font-weight:bold;
+}

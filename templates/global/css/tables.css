@@ -1,0 +1,13 @@
+.table-1{
+  margin:0;
+  width:100%;
+}
+.table-1 tr:nth-child(odd){
+  background:#eee;
+}
+.table-1 tr:nth-child(even){
+  background:#e0e0e0;
+}
+.table-1 td{
+  padding:5px;
+}

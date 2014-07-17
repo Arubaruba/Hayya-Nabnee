@@ -1,0 +1,11 @@
+{{volunteers.length}}
+
+{% if volunteers.length == 1 %}
+المتطوع
+{% else %}
+المتطوعين
+{% endif %}
+
+{% if accountIsVolunteer %}
+بما فيهم انت
+{% endif %}

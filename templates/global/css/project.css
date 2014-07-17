@@ -1,0 +1,64 @@
+.date{
+  color:#777;
+  font-weight:bold;
+  font-size:26px;
+  line-height:30px;
+  text-align:right;
+}
+.exact_date{
+  font-size:18px;
+  color:#aaa;
+}
+.div-1 h2{
+  line-height:30px;
+  margin:30px 0 10px 0;
+}
+.div-1 h3{
+  margin:0 0 20px 0;
+}
+.div-1 h4{
+  margin:0 0 10px 0;
+}
+.host_info{
+  font-weight:normal;
+  font-size:18px;
+}
+.volunteering_requirements{
+  margin:20px 0;
+  padding:10px 40px;
+  background:#eee;
+  line-height: 30px;
+}
+.agreement_box{
+  margin:20px 0;
+  font-weight:bold;
+  font-size:18px;
+  height:20px;
+}
+.involved{
+  color:#0078b9;
+  font-weight:bold;
+  font-size:19px;
+}
+.link:hover{
+  color:#0078b9;
+}
+.volunteer_involvment_status{
+  font-size:17px;
+  font-weight:bold;
+}
+.volunteer_involvment_status[volunteering=true]{
+  color:#0078b9;
+}
+table.split_textarea{
+  width:100%;
+}
+table.split_textarea td{
+  padding:0 10px;
+}
+table.split_textarea td:first-of-type{
+  padding-{{left}}:0;
+}
+table.split_textarea td:last-of-type{
+  padding-{{right}}:0;
+}

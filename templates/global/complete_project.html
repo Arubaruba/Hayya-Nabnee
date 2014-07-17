@@ -1,0 +1,21 @@
+{% extends 'g/layout.html' %}
+
+{% block head %}
+<link type="text/css" rel="stylesheet" href="/css/complete_project">
+<script src="/js/complete_project"></script>
+{% strings 'errors.json' 'complete_project.json' %}
+{% endblock %}
+
+{% block content %}
+<div class="inner_content_940">
+  <h2>{{l.completeProject}}</h2>
+  {{l.whichVolunteersHelped}}
+  {% for volunteer in volunteers %}
+  <div volunteer_id="{{volunteer._id+''}}" class="volunteer">
+    {{checkBox(null, volunteer.fullName, volunteer.present, false)}}
+  </div>
+  {% endfor %}
+  <br><br>
+  <a class="button" href="javascript:completeProject('{{projectId}}')">{{l.completeProject}}</a>
+</div>
+{% endblock %}

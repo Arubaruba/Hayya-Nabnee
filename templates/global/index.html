@@ -1,0 +1,17 @@
+{% extends 'g/layout.html' %}
+
+{% block head %}
+{% strings 'project.json' %}
+<link type="text/css" rel="stylesheet" href="/css/lists">
+<script src="/js/list"/></script>
+{% endblock %}
+
+{% block content %}
+<div class="inner_content_940">
+  <h1 class="">{{l.buildingProjects}}{% if s.account.type == 'community' %}<a class="right button" href="/begin_project">{{l.beginProject}}</a>{% endif %}</h1>
+  <div id="window-list" class="projects-1">
+    {{projects|safe}}
+  </div>
+  <div id="projects-1_exhausted">{{l.noMoreProjects}}</div>
+</div>
+{% endblock %}

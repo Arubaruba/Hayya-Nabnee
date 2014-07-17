@@ -1,0 +1,9 @@
+{
+  "post": "Post",
+  "reply": "Reply",
+  "cancel": "Cancel",
+  "reconnected": "Reconnected - Refresh to load messages",
+  "replyDotDotDot": "Reply ...",
+  "writeMessageHere": "Write message here ...",
+  "messageNeedsContent": "Message Needs Content"
+}

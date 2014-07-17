@@ -1,0 +1,50 @@
+{% extends 'g/layout.html' %}
+
+{% block head %}
+{% strings 'profile.json' 'fields.json' %}
+<link type="text/css" rel="stylesheet" href="/css/profile">
+<link type="text/css" rel="stylesheet" href="/css/tables">
+{% endblock %}
+
+{% block content %}
+
+{% macro renderProjects(projects) %}
+  <table class="table-projects">
+    {% for project in projects %}
+    <tr>
+      <td class="project_title"><a class="project_title" href="/project/{{project._id+''}}">{{limitLength(project.title, 20)}}</a></td>
+      <td class="project_title">{{descriptiveDate(project.startingDate)}}</td>
+      <td>
+        <span volunteering="{{project.accountIsVolunteer}}" class="volunteer_involvment_status">
+          {% include 'l/volunteer_involvement_status.html' with project  %}
+        </span>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endmacro %}
+
+<div class="inner_content_940">
+  <h2>
+    {{community.fullName}}
+  </h2>
+
+  <h3>
+    {{l.contactInformation}}
+  </h3>
+  <table class="table-1">
+    <tr>
+      <td>{{l.emailAddress}}</td>
+      <td>{{community.email}}</td>
+    </tr>
+    <tr>
+      <td>{{l.phoneNumber}}</td>
+      <td>{{community.phoneNumber}}</td>
+    </tr>
+  </table>
+  <h3>{{l.recentProjects}}</h3>
+  {{renderProjects(recentProjects)}}
+  <h3>{{l.completedProjects}}</h3>
+  {{renderProjects(completedProjects)}}
+</div>
+{% endblock %}

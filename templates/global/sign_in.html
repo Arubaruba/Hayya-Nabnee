@@ -1,0 +1,27 @@
+{% extends 'g/layout.html' %}
+
+{% block head %}
+{% include 'g/macros/fields.html' %}
+{% strings 'fields.json' 'sign_in.json' %}
+<link type="text/css" rel="stylesheet" href="/css/forms">
+<script src="/js/form"/></script>
+<script>
+var formConfig = {
+  clientValidation : function (form, inputs){
+    return {};
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<h1>{{l.signIn}}</h1>
+<form class="inner_content_480 form-1" onsubmit="submitForm(this, '/sign_in/query'); return false">
+  <div class="descriptive_link">
+    {{l.needAnAccount}} 
+    <a href="/sign_up">{{l.signUp}}</a>
+  </div>
+  {{inputFields(fields)}}
+  <input class="right button" type="submit" value="{{l.signIn}}">
+</form>
+{% endblock %}

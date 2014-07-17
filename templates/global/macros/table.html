@@ -1,0 +1,14 @@
+{% macro localized(string) %}
+{% if string %}
+  {% if string[s.locale] %}
+    {% set loc = s.locale %}
+  {% else %}
+    {% set loc = Object.keys(string)[0] %}
+  {% endif %}
+  {{string[loc]}}
+{% endif %}
+{% endmacro %}
+
+{% macro limited(string) %}
+{{limitLength(string, s.config.defaultStringLimit)}}
+{% endmacro %}

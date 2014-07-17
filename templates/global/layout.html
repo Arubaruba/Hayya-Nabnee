@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{l.locale}}" dir="{{l.direction}}">
+<head>
+  {% strings 'layout.json' 'locale.json' 'errors.json' %}
+  {% include 'g/macros/base.html' %}
+  <meta charset="UTF-8">
+  <title>{{l.websiteName}}</title>
+  <link type="text/css" rel="stylesheet" href="/css/base">
+  <link type="text/css" rel="stylesheet" href="/css/layout">
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/async.js"></script>
+  <script src="/js/base"></script>
+  {% block head %}{% endblock %}
+</head>
+<body>
+<div class="upper_area">
+  <div class="fixed_upper_menu">
+    {% if s.account.type %}
+    <a href="javascript:endSession()" class="menu_item">{{l.signOut}}</a>
+    {% else %}
+    <a href="javascript:returnWhenSignedIn()" class="menu_item">{{l.signIn}}</a>
+    {% endif %}
+
+    <a href="/projects" class="menu_item">{{l.projects}}</a>
+
+    {% if s.account.type == 'admin' %}
+    <a href="/admin" class="menu_item">{{l.admin}}</a>
+    {% endif %}
+    
+    {% if s.account.type == 'community' %}
+    <a href="/profile/{{s.account._id + ''}}" class="menu_item">{{l.myProfile}}</a>
+    {% endif %}
+
+    <span class="right">
+      {% if s.locale == 'en' %}
+      <a class="language" href="?locale=ar"><img src="/static/img/flag_jo.png"> العربية </a>
+      {% else %}
+      <a class="language" href="?locale=en"><img src="/static/img/flag_us.png"> English</a>
+      {% endif %}
+    </span>
+  </div>
+  <div class="website_title_area">
+    <a href="/" class="title">{{l.websiteName}}</a><br>
+    <span class="slogan">{{l.slogan|safe}}</span>
+  </div>
+</div>
+<div class="content">
+  <div id="general_response_container">
+    <div id="general_response"></div>
+  </div>
+{% block content %}{% endblock %}
+</div>
+</body>
+</html>

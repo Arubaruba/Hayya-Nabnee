@@ -1,0 +1,13 @@
+{
+  "fullName": "الأسم بالكامل",
+  "emailAddress": "الايميل",
+  "password": "الرقم السري",
+  "repeatPassword": "اعادة كتابة الرقم السري",
+  "phoneNumber": "رقم الهاتف",
+  "date": "التاريخ",
+  "day": "اليوم",
+  "month": "الشهر",
+  "year": "السنة",
+  "optional": "اختياري",
+  "fieldNotRequired": "بأمكانك ترك هذا الحقل فارغ"
+}

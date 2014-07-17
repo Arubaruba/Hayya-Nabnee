@@ -1,0 +1,35 @@
+{% strings 'project.json' %}
+{% include 'g/macros/base.html' %}
+{% for project in projects %}
+<div class="div-1">
+  <div class="upper_bar">
+    <a class="link" href="/project/{{project._id + ''}}">{{limitLength(project.title, 65)}}</a>
+    <span class="right date">
+      {{descriptiveDate(project.startingDate)}}<br>
+      <span class="exact_date">{{getDate(project.startingDate)|date('d/m/Y')}}</span>
+    </span><br>
+    {% if project.community._id + '' == s.account._id + '' && project.startingDate < s.now %}
+    <div class="confirm_completion">
+      <a class="button complete_project_link" href="/project/{{project._id+''}}/complete">
+        {% if project.complete %}
+          {{l.editVolunteerAttendence}}
+        {% else %}
+          {{l.completeProject}}
+        {% endif %}
+      </a>
+    </div>
+    {% endif %}
+    <span class="host">
+      {{l.hostedBy}}
+      <a {% if project.community._id + '' == s.account._id + ''%} blue {% endif %} 
+        class="link" href="/profile/{{project.community._id + ''}}">{{project.community.fullName}}</a>
+    </span><br>
+    <span volunteering="{{project.accountIsVolunteer}}" class="volunteer_involvment_status">
+      {% include 'l/volunteer_involvement_status.html' with project  %}
+    </span>
+  </div>
+  <div class="text_content">
+    {{project.description}}
+  </div>
+</div>
+{% endfor %}

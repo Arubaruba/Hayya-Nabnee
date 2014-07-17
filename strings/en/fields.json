@@ -1,0 +1,13 @@
+{
+  "fullName": "Full Name",
+  "emailAddress": "Email Address",
+  "password": "Password",
+  "repeatPassword": "Repeat Password",
+  "phoneNumber": "Phone Number",
+  "date": "Date",
+  "day": "Day",
+  "month": "Month",
+  "year": "Year",
+  "optional": "Optional",
+  "fieldNotRequired": "You can leave this field blank"
+}

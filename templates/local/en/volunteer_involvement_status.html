@@ -1,0 +1,11 @@
+{{volunteers.length}}
+
+{% if volunteers.length == 1 %}
+Volunteer
+{% else %}
+Volunteers
+{% endif %}
+
+{% if accountIsVolunteer %}
+including you
+{% endif %}

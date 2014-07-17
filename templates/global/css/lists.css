@@ -1,0 +1,54 @@
+.projects-1 .upper_bar {
+  margin-bottom:10px;
+}
+.projects-1 .link[blue],
+.projects-1 .link:hover{
+  color:#0078b9;
+}
+.projects-1 .date{
+  color:#777;
+  font-weight:bold;
+  font-size:20px;
+  line-height:20px;
+  text-align:right;
+}
+.projects-1 .involved{
+  color:#0078b9;
+  font-weight:bold;
+  font-size:17px;
+}
+.projects-1 .exact_date{
+  font-size:12px;
+  color:#aaa;
+}
+.projects-1 .host{
+  font-size:16px;
+}
+.projects-1 .volunteer_involvment_status{
+  font-size:17px;
+  font-weight:bold;
+}
+.projects-1 .volunteer_involvment_status[volunteering=true]{
+  color:#0078b9;
+}
+.projects-1 .text_content{
+  font-weight:normal;
+  font-size:18px;
+  line-height:25px;
+  max-height: 75px;
+  overflow:hidden;
+}
+#projects-1_exhausted{
+  display:none;
+  padding:20px 0;
+  border-top: 1px dotted #ccc;
+  font-size:24px;
+}
+.projects-1 .complete_project_link{
+  font-size:16px;
+  margin:10px 0;
+  padding:6px;
+}
+.projects-1 .confirm_completion{
+  margin:10px 0;
+}

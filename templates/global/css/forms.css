@@ -1,0 +1,81 @@
+.form-1{
+  width:480px;
+  font-weight:bold;
+  overflow:auto;
+}
+.form-1 input[type=textfield],
+.form-1 input[type=_date],
+.form-1 input[type=email],
+.form-1 input[type=password],
+.form-1 textarea 
+{
+  font-family:inherit;
+  color:#333;
+  height:30px;
+  padding:10px 5px;
+  margin-top:10px;
+  font-size:24px;
+  background:#ddd;
+  border:none;
+}
+.form-1 input[type=textfield],
+.form-1 input[type=email],
+.form-1 input[type=password]
+{
+  width:470px;
+}
+.form-1 input[error],
+.form-1 textarea[error]
+{
+  background:#E9836F;
+}
+.form-1 textarea{
+  font-weight:normal;
+  font-size:18px;
+  padding:3px;
+  width:474px;
+  height:200px;
+}
+.form-1 #day{
+  width: 60px;
+}
+.form-1 #month{
+  width: 80px;
+}
+.form-1 #year{
+  width: 100px;
+}
+.form-1 .field_frame{
+  margin-bottom:20px;
+}
+.form-1 .optional{
+  font-size:16px;
+  color:#808080;
+}
+.form-1 .field_issues{
+  display:none;
+  line-height:35px;
+  padding:10px;
+  font-weight:bold;
+  font-size:17px;
+  background:#eee;
+  color:#333;
+  margin-top:5px;
+}
+.form-1 #general_response{
+  display:none;
+  line-height:30px;
+  padding:20px;
+  margin-bottom:30px;
+  background:#ddd;
+}
+.form-1 #general_response[error]{
+  background:#E9836F;
+}
+.form-1 .descriptive_link{
+  font-weight:normal;
+  margin-bottom:20px;
+}
+.form-1 .descriptive_link a{
+  color:#0078b9;
+}

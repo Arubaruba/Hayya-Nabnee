@@ -1,0 +1,37 @@
+{% macro inputFields(frameClass, messageClass, field) %}
+  {% for field in fields %}
+  <div class="field_frame" id="{{field.id}}" {% if field.optional %}optional="true"{% endif %}>
+    {{l[field.label]}}
+    {% if field.optional %}
+    <span class="optional" title="{{l.fieldNotRequired}}">
+    {{l.optional}}
+    </span>
+    {% endif %}
+    <br>
+    {{inputs[field.input | default('text')](field) | safe}}
+    <div class="field_issues" id="{{field.id}}"></div>
+  </div>
+  {% endfor %}
+{% endmacro %}
+
+{% macro textInput(field) %}
+<input placeholder="{{l[field.label]}}" type="{{field.type}}"><br>
+{% endmacro %}
+
+{% macro textAreaInput(field) %}
+<textarea placeholder="{{l[field.label]}}"></textarea>
+{% endmacro %}
+
+{% macro dateInput(field) %}
+{% set today = Date() %}
+<input placeholder="{{l.day}}" id="day" type="_date">
+<input placeholder="{{l.month}}" id="month" type="_date" value="{{s.now.getMonth() + 1}}">
+<input placeholder="{{l.year}}" id="year" type="_date" value="{{s.now.getFullYear()}}">
+{% endmacro %}
+
+{% macro confirmedInput(field) %}
+<input placeholder="{{l[field.firstLabel]}}" id="first" type="password"><br>
+<input placeholder="{{l[field.secondLabel]}}" id="second" type="password"><br>
+{% endmacro %}
+
+{% set inputs={text:textInput, _date:dateInput, confirmed: confirmedInput, textarea: textAreaInput} %}

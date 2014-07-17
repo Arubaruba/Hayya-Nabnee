@@ -1,0 +1,101 @@
+{
+  "": {
+    "scriptPath": "index#page"
+  },
+  "projects": {
+    "scriptPath": "index#page"
+  },
+  "load_projects":{
+    "scriptPath": "index#loadProjects"
+  },
+  "profile":{
+    "dirs":{
+      "$":{
+        "scriptPath": "profile#handleAccountType"
+      }
+    }
+  },
+  "project":{
+    "dirs":{
+      "$":{
+        "scriptPath": "project#page",
+        "dirs":{
+          "volunteer":{
+            "scriptPath": "project#volunteer"
+          },
+          "complete":{
+            "accountTypes": ["community"],
+            "scriptPath":"complete_project#page",
+            "dirs":{
+              "submit_report":{
+                "scriptPath":"complete_project#submitReport"
+              }
+            }
+          },
+          "leave":{
+            "scriptPath": "project#leave"
+          }
+        }
+      }
+    }
+  },
+  "admin": {
+    "scriptPath": "admin#page",
+    "accountTypes": ["admin"],
+    "dirs":{
+      "send_community_link":{
+        "scriptPath": "admin#sendCommunityLink"
+      }
+    }
+  },
+  "begin_project": {
+    "scriptPath": "begin_project#page",
+    "accountTypes": ["community"],
+    "dirs":{
+      "query":{
+        "scriptPath": "begin_project#query"
+      }
+    }
+  },
+  "css": {
+    "scriptPath": "resources#css",
+    "unconditionalExecution": true
+  },
+  "js": {
+    "scriptPath": "resources#js",
+    "unconditionalExecution": true
+  },
+  "static": {
+    "scriptPath": "resources#static",
+    "unconditionalExecution": true
+  },
+  "sign_in": {
+    "scriptPath": "sign_in#page",
+    "dirs": {
+      "query": {
+        "scriptPath": "sign_in#query"
+      }
+    }
+  },
+  "sign_up": {
+    "scriptPath": "sign_up#page",
+    "dirs": {
+      "query": {
+        "scriptPath": "sign_up#query"
+      }
+    }
+  },
+  "error": {
+    "dirs": {
+      "401": {
+        "scriptPath": "error#error401"
+      },
+      "404": {
+        "scriptPath": "error#error404"
+      },
+      "expired_link": {
+        "scriptPath": "error#expiredLink"
+      }
+    }
+  }
+}

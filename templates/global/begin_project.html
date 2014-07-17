@@ -1,0 +1,45 @@
+{% extends 'g/layout.html' %}
+
+{% block head %}
+{% include 'g/macros/fields.html' %}
+<link type="text/css" rel="stylesheet" href="/css/forms">
+{% strings 'project.json' 'errors.json' 'fields.json' %}
+<script src="/js/form"/></script>
+<script>
+
+var daysBetween = function(firstDate, secondDate) {
+
+  firstDate = new Date(firstDate.getFullYear(), firstDate.getMonth(), firstDate.getDate());
+  secondDate = new Date(secondDate.getFullYear(), secondDate.getMonth(), secondDate.getDate());
+
+  var millisecondsPerDay = 1000 * 60 * 60 * 24;
+  return Math.floor((secondDate - firstDate) / millisecondsPerDay);
+}
+
+var formConfig = {
+  clientValidation : function (form, inputs){
+                       console.log(inputs);
+    return {
+    startingdate: [{
+      condition: (daysBetween(
+        new Date(inputs.startingdate[2], inputs.startingdate[1], inputs.startingdate[0]),
+        new Date()) > 0),
+       message: '{{l.datePassed}}'
+    }],
+    };
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="inner_content_480">
+  <h2>{{l.beginProject}}</h2>
+  <form class="form-1" onsubmit="submitForm(this, '/begin_project/query'); return false">
+    {{inputFields(fields)}}
+    <br>
+    <a class="left button" href="javascript:history.go(-1)">{{l.back}}</a>
+    <input class="right button" type="submit" value="{{l.beginProject}}">
+  </form>
+</div>
+{% endblock %}

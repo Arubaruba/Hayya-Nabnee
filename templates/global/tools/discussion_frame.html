@@ -1,0 +1,28 @@
+{% strings 'discussion.json' %}
+{% include 'g/macros/fields.html' %}
+
+{% macro renderMessagesRecursively(replyTo, givenAltStyle) %}
+  {% for message in messages %}
+    {% if message.replyTo + '' == replyTo + '' %}
+    {%set altStyle = givenAltStyle %}
+      {% include 'g/tools/discussion_message.html' with altStyle %}
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+<link type="text/css" rel="stylesheet" href="/css/discussion">
+<script src="/js/form"/></script>
+<script src="{{s.config.domain}}:{{s.config.ports.discussion}}/socket.io/socket.io.js"></script>
+<script src="/js/discussion"/></script>
+<meta id="discussion_id"  discussion_id="{{discussionId+''}}">
+
+<div class="post_message">
+  <textarea expanded onfocus="messageContentFocused(this)" id="message_content" placeholder="{{l.writeMessageHere}}"></textarea>
+  <div class="input_bar">
+    <a onclick="postMessage(this)" class="button small_button">{{l.post}}</a>
+  </div>
+</div>
+<br>
+<div id="messages_root">
+{{renderMessagesRecursively('', false)|safe}}
+</div>
