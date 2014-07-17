@@ -4,7 +4,7 @@
 <link type="text/css" rel="stylesheet" href="/css/forms">
 {% strings 'admin.json' 'errors.json' %}
 {% include 'g/macros/fields.html' %}
-<script src="/js/form"/></script>
+<script src="/js/form"></script>
 <script>
 var formConfig = {
   clientValidation : function (form, inputs){
@@ -18,7 +18,7 @@ var formConfig = {
 <div class="inner_content_940">
   <h2>{{l.adminTools}}</h2>
   {{l.linkWillBeSent}}<br><br>
-  <form class="form-1" onsubmit="submitForm(this, '/admin/send_community_link'); return false">
+  <form class="form-1 left" onsubmit="submitForm(this, '/admin/send_community_link'); return false">
     <div id="general_response"></div>
     {{inputFields(fields)}}
     <input class="button" type="submit" value="{{l.sendLink}}">
