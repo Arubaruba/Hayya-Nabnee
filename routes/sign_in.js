@@ -79,7 +79,8 @@ exports.query = function(s) {
       });
       s.setCookie('session', string,{path:'/'});
       s.removeCookie('previous_page', {path:'/'});
-      if (s.cookies.previous_page && !s.cookies.previous_page.beginsWith('/sign_in')) {
+        //.indexOf is used to check if the string starts with something
+      if (s.cookies.previous_page && !s.cookies.previous_page.indexOf('/sign_in') != 0) {
         s.redirect(s.cookies.previous_page);
       } else {
         s.redirect('/');
