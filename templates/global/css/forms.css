@@ -9,6 +9,7 @@
 .form-1 input[type=password],
 .form-1 textarea 
 {
+  text-align: inherit;
   font-family:inherit;
   color:#333;
   height:30px;

@@ -2,7 +2,8 @@
 {% strings 'errors.json' %}
 {% strings 'discussion.json' %}
 
-var socket = io.connect('{{s.config.ports.domain}}:{{s.config.ports.discussion}}');
+//The server will connect this
+var socket = io.connect();
 
 socket.io.on('connect_error', function(){
   showGeneralResponse('{{l.unableToConnect}}', true);
@@ -79,3 +80,5 @@ var postMessage = function(target){
     }
   }
 }
+
+

@@ -11,10 +11,11 @@ var util = require('./util');
 var config = require('../config.json');
 var database = require('./resources/database');
 var routes = require('./resources/routes');
+var discussion = require('../routes/tools/discussion');
 
 var sslOptions = {
   pfx: fs.readFileSync(config.dir + '/server.p12'),
-  passphrase:'Flastirst6142' 
+  passphrase:'Flastirst6142'
 };
 
 //Redirect http requests to https
@@ -77,6 +78,7 @@ var server = https.createServer(sslOptions, function(request, response) {
 
 //Make sure these async functions are done
 async.parallel([database.init], function() {
+  discussion.init(require('socket.io')(server));
   server.listen(config.ports.https);
   log('Server Initialized');
 });

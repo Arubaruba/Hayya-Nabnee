@@ -5,7 +5,7 @@ var config = require('../../config');
 var database = require('../../core/resources/database');
 var templates = require('../../core/resources/templates');
 
-var io = require('socket.io').listen(config.ports.discussion);
+var io;
 
 exports.render = function(s, discussionId, callback) {
 
@@ -88,72 +88,77 @@ exports.render = function(s, discussionId, callback) {
   });
 }
 
-io.sockets.on('connection', function(socket) {
+exports.init = function(_io) {
 
-  var db = database.getDb();
+    io = _io;
 
-  function makeSession(data){
-    var s = {
-      locale: data.locale
-    }
+    io.sockets.on('connection', function (socket) {
 
-    s.renderText = function(path, vars, ignoreMissing) {
-      return templates.render(s, path, vars, ignoreMissing);
-    }
-    s.strings = templates.stringsFunc(s);
+        var db = database.getDb();
 
-    return s;
-  }
-
-  if (db) {
-
-    socket.on('join', function(data) {
-      socket.join(data);
-    });
-
-    socket.on('post_message', function(data) {
-
-      var discussionId = mongoTools.parseId(data.discussionId);
-      var replyToId = (data.replyTo) ? mongoTools.parseId(data.replyTo) : '';
-      var authorId = mongoTools.parseId(data.accountId);
-
-      if (discussionId && replyToId != null && authorId) {
-
-        var s = makeSession(data);
-
-        var discussionStrings = s.strings('discussion.json');
-
-        db.collection('messages').insert({
-          author: authorId,
-          discussion: discussionId,
-          body: data.body,
-          replyTo: replyToId,
-          posted: new Date()
-        }, function(err, messageResults) {
-          db.collection('accounts').find({
-            _id: authorId
-          }, {
-            fullName: 1
-          }).toArray(function(err, accountResults) {
-            if (accountResults[0]) {
-              mongoTools.join(messageResults, {
-                author: accountResults
-              });
-              io.to(data.discussionId).emit('load_message', {
-                messageHTML: s.renderText('g/tools/discussion_message.html', {
-                  message: messageResults[0],
-                  descriptiveDate: function(date) {
-                    return dateTools.descriptiveDate(s, new Date(), new Date(date), {}, true);
-                  }
-                }),
-                replyTo: data.replyTo,
-              });
+        function makeSession(data) {
+            var s = {
+                locale: data.locale
             }
-          });
-        });
-      }
+
+            s.renderText = function (path, vars, ignoreMissing) {
+                return templates.render(s, path, vars, ignoreMissing);
+            }
+            s.strings = templates.stringsFunc(s);
+
+            return s;
+        }
+
+        if (db) {
+
+            socket.on('join', function (data) {
+                socket.join(data);
+            });
+
+            socket.on('post_message', function (data) {
+
+                var discussionId = mongoTools.parseId(data.discussionId);
+                var replyToId = (data.replyTo) ? mongoTools.parseId(data.replyTo) : '';
+                var authorId = mongoTools.parseId(data.accountId);
+
+                if (discussionId && replyToId != null && authorId) {
+
+                    var s = makeSession(data);
+
+                    var discussionStrings = s.strings('discussion.json');
+
+                    db.collection('messages').insert({
+                        author: authorId,
+                        discussion: discussionId,
+                        body: data.body,
+                        replyTo: replyToId,
+                        posted: new Date()
+                    }, function (err, messageResults) {
+                        db.collection('accounts').find({
+                            _id: authorId
+                        }, {
+                            fullName: 1
+                        }).toArray(function (err, accountResults) {
+                            if (accountResults[0]) {
+                                mongoTools.join(messageResults, {
+                                    author: accountResults
+                                });
+                                io.to(data.discussionId).emit('load_message', {
+                                    messageHTML: s.renderText('g/tools/discussion_message.html', {
+                                        message: messageResults[0],
+                                        descriptiveDate: function (date) {
+                                            return dateTools.descriptiveDate(s, new Date(), new Date(date), {}, true);
+                                        }
+                                    }),
+                                    replyTo: data.replyTo,
+                                });
+                            }
+                        });
+                    });
+                }
+            });
+        } else {
+            console.log('socket needs connected database');
+        }
     });
-  } else {
-    console.log('socket needs connected database');
-  }
-});
+}

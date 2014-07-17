@@ -1,19 +1,16 @@
 {
   "url": "https://hayyanabnee.com",
-  "domain": "https://hayyanabnee.com",
   "dir": "/home/andreas/Git/Hayya-Nabnee",
   "paths": {
     "strings": "strings/",
     "routes": "/routes/",
     "static": "/static",
     "globalTemplatePath":"/templates/global/",
-    "localTemplatePath":"/templates/local/",
-    "socket.io": "/socket.io/"
+    "localTemplatePath":"/templates/local/"
   },
   "ports":{
-    "http":8001,
-    "https":4430,
-    "discussion":9324
+    "http": 80,
+    "https": 430
   },
   "cookie":{
     "distantExpiryDate": "01-Jan-2100 GMT",

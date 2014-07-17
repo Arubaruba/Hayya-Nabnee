@@ -4,7 +4,7 @@
 {% strings 'project.json' 'fields.json' %}
 <link type="text/css" rel="stylesheet" href="/css/project">
 <link type="text/css" rel="stylesheet" href="/css/lists">
-<script src="/js/project"/></script>
+<script src="/js/project"></script>
 {% endblock %}
 
 {% block content %}
@@ -58,9 +58,9 @@
     </table>
   </div>
 
-  <div class="div-1" style="display:none">
+  <div class="div-1">
     <h3>{{l.discussion}}</h3>
-    {#discussion|safe#}
+    {{discussion|safe}}
   </div>
 </div>
 {% endblock %}

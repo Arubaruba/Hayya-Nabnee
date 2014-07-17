@@ -24,8 +24,8 @@ exports.query = function(s) {
   var fieldCorrections = {
     emailaddress: [{
       condition: true,
-      message: 'input too short',
-    }],
+      message: 'input too short'
+    }]
   };
 
   async.waterfall([
@@ -71,7 +71,7 @@ exports.query = function(s) {
           'tokens': {
             type: 'session',
             value: string,
-            expires: expires,
+            expires: expires
           }
         }
       }, function(err, results) {}, {
