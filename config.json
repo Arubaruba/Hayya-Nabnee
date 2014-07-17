@@ -1,7 +1,7 @@
 {
   "url": "https://hayyanabnee.com",
   "domain": "https://hayyanabnee.com",
-  "dir": "/home/andreas/NodeJS",
+  "dir": "/home/andreas/Git/Hayya-Nabnee",
   "paths": {
     "strings": "strings/",
     "routes": "/routes/",
@@ -11,8 +11,8 @@
     "socket.io": "/socket.io/"
   },
   "ports":{
-    "http":80,
-    "https":443,
+    "http":8001,
+    "https":4430,
     "discussion":9324
   },
   "cookie":{
