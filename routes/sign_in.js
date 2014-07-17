@@ -79,7 +79,7 @@ exports.query = function(s) {
       });
       s.setCookie('session', string,{path:'/'});
       s.removeCookie('previous_page', {path:'/'});
-      if (s.cookies.previous_page && s.cookies.previous_page !='/sign_in') {
+      if (s.cookies.previous_page && !s.cookies.previous_page.beginsWith('/sign_in')) {
         s.redirect(s.cookies.previous_page);
       } else {
         s.redirect('/');

@@ -7,6 +7,9 @@ pids
 *.pid
 *.seed
 
+#Local Config file
+config.json
+
 #Webstorm project files
 .idea
 
