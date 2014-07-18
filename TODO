@@ -1,1 +1,9 @@
 Message age display does not update automatically
+Not all messages should be loaded at once
+
+MAJOR UPDATE:
+Move swig to the browser
+
+AR Localization Strings Missing:
+
+invalidHour, invalidMinute

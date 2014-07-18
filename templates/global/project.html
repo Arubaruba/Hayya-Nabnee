@@ -12,7 +12,7 @@
   <h2>{{limitLength(project.title, 40)}}
     <span class="right date">
       {{descriptiveDate(project.startingDate)}}<br>
-      <span class="exact_date">{{getDate(project.startingDate)|date('d/m/Y')}}</span>
+      <span class="exact_date">{{getDate(project.startingDate)|date('G:i - d/m/Y')}}</span>
     </span><br>
     <span class="host_info">
       {{l.hostedBy}}
@@ -33,7 +33,7 @@
       {{checkBox('agree_to_requirements', '', project.accountIsVolunteer,project.accountIsVolunteer)}} {{l.agreeToConditions}}
     </div>
 
-    <div id="toggle_participation" class="div-1">
+    <div class="div-1">
       {% if project.accountIsVolunteer %}
       <a id="leave_project" class="button">{{l.leaveProject}}</a>
       {% else %}

@@ -1,7 +1,7 @@
 .form-1{
   width:480px;
   font-weight:bold;
-  overflow:auto;
+  overflow:visible;
 }
 .form-1 input[type=textfield],
 .form-1 input[type=_date],
@@ -37,7 +37,7 @@
   width:474px;
   height:200px;
 }
-.form-1 #day{
+.form-1 #hour, .form-1 #minute, .form-1 #day{
   width: 60px;
 }
 .form-1 #month{

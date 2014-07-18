@@ -4,7 +4,7 @@
 {% include 'g/macros/fields.html' %}
 <link type="text/css" rel="stylesheet" href="/css/forms">
 {% strings 'project.json' 'errors.json' 'fields.json' %}
-<script src="/js/form"/></script>
+<script src="/js/form"></script>
 <script>
 
 var daysBetween = function(firstDate, secondDate) {
@@ -18,14 +18,17 @@ var daysBetween = function(firstDate, secondDate) {
 
 var formConfig = {
   clientValidation : function (form, inputs){
-                       console.log(inputs);
+    var date = new Date(inputs.startingdate[4], inputs.startingdate[3], inputs.startingdate[2]);
+    date.setHours(inputs.startingdate[0]);
+    date.setMinutes(inputs.startingdate[1]);
+    console.log(date);
     return {
     startingdate: [{
       condition: (daysBetween(
-        new Date(inputs.startingdate[2], inputs.startingdate[1], inputs.startingdate[0]),
+        date,
         new Date()) > 0),
        message: '{{l.datePassed}}'
-    }],
+    }]
     };
   }
 }

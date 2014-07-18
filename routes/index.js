@@ -49,10 +49,11 @@ function getProjects(s, skip, limit, callback) {
           return new Date(date);
         },
         descriptiveDate: function(date) {
-          return dateTools.descriptiveDate(s, new Date(), new Date(date), {
+
+          return dateTools.descriptiveDate(s, null, date, {
             present: strings.begins,
             past: strings.started
-          });
+          }, true);
         }
       });
       callback(projectList);

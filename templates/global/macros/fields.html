@@ -24,8 +24,8 @@
 
 {% macro dateInput(field) %}
 {% set today = Date() %}
-<input placeholder="{{l.hour}}" id="hour" type="_date" value="{{s.now.getFullYear()}}">
-<input placeholder="{{l.minute}}" id="minute" type="_date" value="{{s.now.getFullYear()}}"> -
+<input placeholder="H" id="hour" type="_date" value="12"> :
+<input placeholder="M" id="minute" type="_date" value="00"> -
 <input placeholder="{{l.day}}" id="day" type="_date">
 <input placeholder="{{l.month}}" id="month" type="_date" value="{{s.now.getMonth() + 1}}">
 <input placeholder="{{l.year}}" id="year" type="_date" value="{{s.now.getFullYear()}}">

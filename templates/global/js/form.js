@@ -20,12 +20,30 @@ function defaultValidation(form, inputs) {
       message: "{{l.emptyField}}"
     });
 
-    if (!empty && fields.attr('type') == 'date') {
-      var day = $(fields[0]).val();
-      var month = $(fields[1]).val();
-      var year = $(fields[2]).val();
+    if (!empty && fields.attr('type') == '_date') {
+      var hour = $(fields[0]).val();
+      var minute = $(fields[1]).val();
+      var day = $(fields[2]).val();
+      var month = $(fields[3]).val();
+      var year = $(fields[4]).val();
 
       var invalidDateValue = false;
+
+      if (hour < 0 || hour > 24) {
+        invalidDateValue = true;
+        missingRequirements[frame].push({
+          condition: true,
+          message: "{{l.invalidHour}}"
+        });
+      }
+
+      if (minute < 0 || minute > 59) {
+        invalidDateValue = true;
+        missingRequirements[frame].push({
+          condition: true,
+          message: "{{l.invalidMinute}}"
+        });
+      }
 
       if (day < 1 || day > 31) {
         invalidDateValue = true;
@@ -42,10 +60,8 @@ function defaultValidation(form, inputs) {
           message: "{{l.invalidMonth}}"
         });
       }
-
-      var now = new Date();
-
-      if (!invalidDateValue && Date.UTC(year, month - 1, day + 1) < Date.UTC(now.getFullYear(), now.getMonth() + 1, now.getDate())) {
+      console.log((new Date(Date.UTC(year, month - 1, day + 1))).getHours());
+      if (!invalidDateValue && Date.UTC(year, month - 1, day + 1) < new Date()) {
         missingRequirements[frame].push({
           condition: true,
           message: "{{l.datePassed}}"

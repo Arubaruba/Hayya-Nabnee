@@ -44,10 +44,10 @@ exports.page = function(s) {
           return new Date(date);
         },
         descriptiveDate: function(date) {
-          return dateTools.descriptiveDate(s, new Date(), new Date(date), {
+          return dateTools.descriptiveDate(s, null, new Date(date), {
             present: strings.begins,
             past: strings.started
-          });
+          }, true);
         },
       });
     });

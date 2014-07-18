@@ -4,10 +4,16 @@ var daysBetween = function(firstDate, secondDate) {
   secondDate = new Date(secondDate.getFullYear(), secondDate.getMonth(), secondDate.getDate());
 
   var millisecondsPerDay = 1000 * 60 * 60 * 24;
+
   return Math.floor((secondDate - firstDate) / millisecondsPerDay);
 }
 
 exports.descriptiveDate = function(s, firstDate, secondDate, verbs, fractionsOfADay) {
+
+  var now = new Date();
+  now.setUTCHours(now.getHours());
+  firstDate = (!firstDate) ? now : firstDate;
+  secondDate = (!secondDate) ? now : secondDate;
 
   var strings = s.strings('date_tools.json');
 

@@ -16,7 +16,7 @@ var fields = [{
   input: 'textarea'
 }, {
   id: 'startingdate',
-  label: 'startingDate',
+  label: 'begins',
   input: '_date'
 }]
 
@@ -31,9 +31,11 @@ exports.query = function(s) {
   var errors = s.strings('errors.json');
   var projects = s.db.collection('projects');
 
-  var day = s.get.startingdate[0];
-  var month = s.get.startingdate[1];
-  var year = s.get.startingdate[2];
+  var hour = s.get.startingdate[0];
+  var minute = s.get.startingdate[1];
+  var day = s.get.startingdate[2];
+  var month = s.get.startingdate[3];
+  var year = s.get.startingdate[4];
 
   var pastDate = (dateTools.daysBetween(new Date(year, month - 1, day), new Date()) > 0);
 
@@ -45,9 +47,11 @@ exports.query = function(s) {
   };
 
   var startingDate = new Date();
-  startingDate.setDate(day);
-  startingDate.setMonth(month - 1);
-  startingDate.setFullYear(year);
+  startingDate.setUTCHours(hour);
+  startingDate.setUTCMinutes(minute);
+  startingDate.setUTCDate(day);
+  startingDate.setUTCMonth(month - 1);
+  startingDate.setUTCFullYear(year);
 
   formTools.corrections(s, fields, fieldCorrections, function() {
 
@@ -58,7 +62,7 @@ exports.query = function(s) {
       location: s.get.location,
       startingDate: startingDate,
       volunteers:[],
-      discussionId: mongoTools.newId(),
+      discussionId: mongoTools.newId()
     }, function() {});
 
     s.redirect('/');
