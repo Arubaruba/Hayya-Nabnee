@@ -1,4 +1,3 @@
-var querystring = require('querystring');
 var log = require('./log');
 var swig = require('swig');
 var config = require('../config.json');
@@ -23,7 +22,7 @@ module.exports = function(request, response, callback) {
     mailer: mailer,
     url: request.url,
     now: new Date(),
-    dynamicRoutes: [],
+    dynamicRoutes: []
   }
 
   //These have to come later because they require the Session Var

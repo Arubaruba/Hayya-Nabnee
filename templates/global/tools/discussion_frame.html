@@ -5,7 +5,7 @@
   {% for message in messages %}
     {% if message.replyTo + '' == replyTo + '' %}
     {%set altStyle = givenAltStyle %}
-      {% include 'g/tools/discussion_message.html' with altStyle %}
+      {% include 'g/tools/discussion_message.html' %}
     {% endif %}
   {% endfor %}
 {% endmacro %}

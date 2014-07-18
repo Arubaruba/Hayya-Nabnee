@@ -1,4 +1,3 @@
-{% strings 'discussion.json' %}
 <div class="message" id="{{message._id+''}}">
   <div class="inner_message_border">
     <div class="title">
@@ -10,7 +9,7 @@
     </div>
   </div>
   <div class="post_message">
-    <textarea onresizeend="console.log(1234)" onfocus="messageContentFocused(this)" id="message_content" placeholder="{{l.replyDotDotDot}}"></textarea>
+    <textarea onfocus="messageContentFocused(this)" id="message_content" placeholder="{{l.replyDotDotDot}}"></textarea>
     <div class="input_bar">
       <a onclick="postMessage(this);closePost(this)" class="button small_button">{{l.reply}}</a>
       <a onclick="closePost(this)" name="cancel" class="button small_button">{{l.cancel}}</a>

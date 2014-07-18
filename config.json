@@ -9,8 +9,8 @@
     "localTemplatePath":"/templates/local/"
   },
   "ports":{
-    "http": 80,
-    "https": 430
+    "http": 8000,
+    "https": 8888
   },
   "cookie":{
     "distantExpiryDate": "01-Jan-2100 GMT",

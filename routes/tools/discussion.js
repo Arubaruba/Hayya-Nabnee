@@ -5,16 +5,13 @@ var config = require('../../config');
 var database = require('../../core/resources/database');
 var templates = require('../../core/resources/templates');
 
-var io;
-
 exports.render = function(s, discussionId, callback) {
-
   async.waterfall([
 
     function(callback) {
       s.db.collection('messages').aggregate([{
         $match: {
-          discussion: discussionId,
+          discussion: discussionId
         }
       }, {
         $project: {
@@ -74,23 +71,22 @@ exports.render = function(s, discussionId, callback) {
       });
     }
   ], function(err, messages) {
-    if (err) {
-      throw (err);
-    } else {
-      callback(null, s.renderText('g/tools/discussion_frame.html', {
+    if (!err) {
+      var html = s.renderText('g/tools/discussion_frame.html', {
         messages: messages,
         discussionId: discussionId,
-        descriptiveDate: function(date) {
+        descriptiveDate: function (date) {
           return dateTools.descriptiveDate(s, new Date(), new Date(date), {}, true);
         }
-      }));
+      });
+      callback(null, html);
+    } else {
+      throw (err);
     }
   });
 }
 
-exports.init = function(_io) {
-
-    io = _io;
+exports.init = function(io) {
 
     io.sockets.on('connection', function (socket) {
 
@@ -105,7 +101,6 @@ exports.init = function(_io) {
                 return templates.render(s, path, vars, ignoreMissing);
             }
             s.strings = templates.stringsFunc(s);
-
             return s;
         }
 
@@ -150,7 +145,7 @@ exports.init = function(_io) {
                                             return dateTools.descriptiveDate(s, new Date(), new Date(date), {}, true);
                                         }
                                     }),
-                                    replyTo: data.replyTo,
+                                    replyTo: data.replyTo
                                 });
                             }
                         });
@@ -158,7 +153,7 @@ exports.init = function(_io) {
                 }
             });
         } else {
-            console.log('socket needs connected database');
+            console.log('socket needs to be connected to database');
         }
     });
 }
