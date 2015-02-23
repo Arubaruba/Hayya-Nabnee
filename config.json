@@ -1,13 +1,6 @@
 {
   "url": "https://hayyanabnee.com",
   "dir": "/home/andreas/Git/Hayya-Nabnee",
-  "paths": {
-    "strings": "strings/",
-    "routes": "/routes/",
-    "static": "/static",
-    "globalTemplatePath":"/templates/global/",
-    "localTemplatePath":"/templates/local/"
-  },
   "ports":{
     "http": 8000,
     "https": 8888
@@ -25,7 +18,7 @@
   "accountDefaults":{
     "tokens": []
   },
-  "sessionDurationMinutes": 10,
+  "sessionDurationMinutes": 30,
   "accountCreationLinkDurationDays": 30,
   "defaultStringLimit": 50,
   "mailingAddress": "noreply@hayyanabnee.com",

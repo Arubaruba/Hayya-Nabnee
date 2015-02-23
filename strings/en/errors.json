@@ -20,5 +20,6 @@
   "invalidDay": "Day should be between 1 and 31",
   "invalidMonth": "Month should be between 1 and 12",
   "projectNotFound": "Project not found",
-  "profileNotFound": "Profile not found"
+  "profileNotFound": "Profile not found",
+  "invalidDaysForMonth": "That Month does not have that many days"
 }

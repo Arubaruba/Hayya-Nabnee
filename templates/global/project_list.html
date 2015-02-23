@@ -19,13 +19,13 @@
       </a>
     </div>
     {% endif %}
-    <span class="host">
-      {{l.hostedBy}}
-      <a {% if project.community._id + '' == s.account._id + ''%} blue {% endif %} 
-        class="link" href="/profile/{{project.community._id + ''}}">{{project.community.fullName}}</a>
-    </span><br>
     <span volunteering="{{project.accountIsVolunteer}}" class="volunteer_involvment_status">
       {% include 'l/volunteer_involvement_status.html' with project  %}
+    </span>
+    <span class="host">
+      {{l.hostedBy}}
+      <a {% if project.community._id + '' == s.account._id + ''%} blue {% endif %}
+        class="link" href="/profile/{{project.community._id + ''}}">{{project.community.fullName}}</a>
     </span>
   </div>
   <div class="text_content">

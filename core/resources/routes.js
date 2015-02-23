@@ -1,3 +1,4 @@
+var path = require('path');
 var config = require('../../config.json');
 var routes = require('../../routes.json');
 
@@ -6,7 +7,7 @@ function loadRoutes(subroutes) {
     var route = subroutes[routeName];
     if (route.scriptPath) {
       var parts = route.scriptPath.split('#');
-      var scriptPath = config.dir + config.paths.routes + parts[0];
+      var scriptPath = path.resolve(__dirname, '../../routes', parts[0]);
       var script = require(scriptPath);
       if (!script) {
         throw ('The script \"' + scriptPath + '\" could not be loaded');

@@ -2,7 +2,6 @@ var mongo = require('mongodb');
 var url = require('url');
 var async = require('async');
 var dateTools = require('./tools/date');
-var mongoTools = require('./tools/mongo');
 var projectTools = require('./tools/project');
 var discussionTools = require('./tools/discussion');
 

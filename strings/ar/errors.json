@@ -18,5 +18,6 @@
   "invalidDay": "الأيام يجب ان تكون بين 1 و 31",
   "invalidMonth": "الأشهر يجب ان تكون بين 1 و 12",
   "projectNotFound": "المشروع غير موجود",
-  "profileNotFound": "الصفحة غير موجودة"
+  "profileNotFound": "الصفحة غير موجودة",
+  "invalidDaysForMonth": "لا يكون هذا الشهر ان عدة أيام"
 }

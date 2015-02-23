@@ -1,5 +1,6 @@
 var Swig = require('swig').Swig;
 var fs = require('fs');
+var path = require('path');
 
 var config = require('../../config');
 var util = require('../util');
@@ -10,9 +11,9 @@ var templates = {};
 var init = function() {
 
   //Load Strings
-  util.scanDirRecursively(config.dir + '/' + config.paths.strings, config.mimeTypes.string, function(dir, file, extension) {
-    var path = dir + file + '.' + extension;
-    strings[path] = require(path);
+  util.scanDirRecursively(path.resolve(__dirname, '../../strings'), config.mimeTypes.string, function(dir, file, extension) {
+    var filePath = path.resolve(dir, file + '.' + extension);
+    strings[filePath] = require(filePath);
   });
 
   //Load Templates
@@ -21,39 +22,37 @@ var init = function() {
     var locale = config.locales[i];
     templates[locale] = {};
 
-    var templateDir = config.dir + '/templates/';
+    var templateDir = path.resolve(__dirname, '../../templates');
 
     util.scanDirRecursively(templateDir, config.mimeTypes.template, function(dir, file, extension) {
 
-      var globalTemplatePath = config.dir + '/templates/global/';
-      var localTemplatePath = config.dir + '/templates/local/' + locale + '/';
-      var localStringPath = config.dir + '/strings/' + locale + '/';
+      var globalTemplatePath = path.resolve(__dirname, '../../templates/global');
+      var localTemplatePath = path.resolve(__dirname,  '../../templates/local', locale);
+      var localStringPath = path.resolve(__dirname, '../../strings', locale);
 
-      var path = abbreviatePath(dir + file + '.' + extension);
+      var unshortenedFilePath = path.resolve(dir, file + '.' + extension);
+      var filePath = unshortenedFilePath
+        .replace(globalTemplatePath, 'g')
+        .replace(localTemplatePath, 'l');
 
-      function abbreviatePath(path) {
-        var p = path.replace(globalTemplatePath, 'g/').replace(localTemplatePath, 'l/');
-        return (p == path) ? null : p;
-      }
-
-      function unabbreviatePath(path) {
-        var pathType = path.substring(0, 1);
-        var pathFile = path.substring(2, path.length);
-        switch (pathType) {
+      function unabbreviatePath(filePath) {
+        var filePathType = filePath.substring(0, 1);
+        var filePathFile = filePath.substring(2, filePath.length);
+        switch (filePathType) {
           case 'g':
-            return globalTemplatePath + pathFile;
+            return path.resolve(globalTemplatePath, filePathFile);
           case 'l':
-            return localTemplatePath + pathFile;
+            return path.resolve(localTemplatePath, filePathFile);
           default:
-            return path;
+            return filePath;
         }
       }
 
-      if (path) {
+      if (filePath != unshortenedFilePath) {
         var swig = new Swig({
           loader: {
-            load: function(path) {
-              return fs.readFileSync(path, 'utf8');
+            load: function(filePath) {
+              return fs.readFileSync(filePath, 'utf8');
             },
             resolve: unabbreviatePath
           }
@@ -64,14 +63,14 @@ var init = function() {
         }, function(compiler, args, content, parents, options) {
           var js = 'if(!_ctx.l) _ctx.l = {};';
           for (var a = 0; a < args.length; a++) {
-            var stringList = strings[localStringPath + args[a].replace(/\'/g, '')];
+            var stringList = strings[path.resolve(localStringPath, args[a].replace(/\'/g, ''))];
             for (s in stringList) {
               js += '_ctx.l.' + s + ' = \'' + stringList[s] + '\';';
             }
           }
           return js;
         }, false, false);
-        templates[locale][path] = swig.compileFile(path);
+        templates[locale][filePath] = swig.compileFile(filePath);
       }
     });
   }
@@ -79,10 +78,10 @@ var init = function() {
 
 init();
 
-exports.render = function(s, path, vars, allowMissing) {
+exports.render = function(s, filePath, vars, allowMissing) {
 
   if(templates[s.locale]){
-    var template = templates[s.locale][path];
+    var template = templates[s.locale][filePath];
 
     if (template) {
       if (!vars) vars = {};
@@ -91,14 +90,14 @@ exports.render = function(s, path, vars, allowMissing) {
     } else if (allowMissing == true) {
       return null;
     } else {
-      throw ('"' + path + '" Template not valid');
+      throw ('"' + filePath + '" Template not valid');
     }
   }
-}
+};
 
 exports.stringsFunc = function(s) {
-  var localStringPath = config.dir + '/strings/' + s.locale + '/';
-  return function(path) {
-    return strings[localStringPath + path];
+  var localStringPath = path.resolve(__dirname, '../../strings', s.locale);
+  return function(filePath) {
+    return strings[path.resolve(localStringPath, filePath)];
   }
-}
+};

@@ -2,14 +2,15 @@
 <html lang="{{l.locale}}" dir="auto">
 <head>
   {% strings 'layout.json' 'locale.json' 'errors.json' %}
-  {% include 'g/macros/base.html' %}
   <meta charset="UTF-8">
   <title>{{l.websiteName}}</title>
   <link type="text/css" rel="stylesheet" href="/css/base">
   <link type="text/css" rel="stylesheet" href="/css/layout">
+  <link rel="shortcut icon" href="/static/img/icon.ico"/>
   <script src="/static/js/jquery.js"></script>
   <script src="/static/js/async.js"></script>
   <script src="/js/base"></script>
+  {% include 'g/macros/base.html' %}
   {% block head %}{% endblock %}
 </head>
 <body>

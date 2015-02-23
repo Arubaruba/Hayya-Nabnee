@@ -38,15 +38,20 @@ exports.query = function(s) {
   var year = s.get.startingdate[4];
 
   var pastDate = (dateTools.daysBetween(new Date(year, month - 1, day), new Date()) > 0);
+  var daysInMonth = new Date(year, month, 0).getDate();
 
   var fieldCorrections = {
     startingdate: [{
       condition: pastDate,
       message: errors.datePassed
-    }],
+    }, {
+      condition: day > daysInMonth,
+      message: errors.invalidDaysForMonth
+    }]
   };
 
   var startingDate = new Date();
+
   startingDate.setUTCHours(hour);
   startingDate.setUTCMinutes(minute);
   startingDate.setUTCDate(day);

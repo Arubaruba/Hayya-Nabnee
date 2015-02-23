@@ -23,6 +23,7 @@
 }
 .projects-1 .host{
   font-size:16px;
+  margin-left: 10px;
 }
 .projects-1 .volunteer_involvment_status{
   font-size:17px;
@@ -33,7 +34,7 @@
 }
 .projects-1 .text_content{
   font-weight:normal;
-  font-size:18px;
+  font-size:14px;
   line-height:25px;
   max-height: 75px;
   overflow:hidden;

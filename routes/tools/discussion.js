@@ -143,7 +143,8 @@ exports.init = function(io) {
                                         message: messageResults[0],
                                         descriptiveDate: function (date) {
                                             return dateTools.descriptiveDate(s, new Date(), new Date(date), {}, true);
-                                        }
+                                        },
+                                        l: discussionStrings
                                     }),
                                     replyTo: data.replyTo
                                 });

@@ -1,6 +1,7 @@
 var fs = require('fs');
 var url = require('url');
 var mime = require('mime');
+var path = require('path');
 
 exports.css = function(s) {
 
@@ -49,12 +50,12 @@ exports.js = function(s) {
     });
     s.response.end(content);
   }
-}
+};
 
 exports.static = function(s) {
 
   var pathname = url.parse(s.request.url).pathname;
-  var fileDir = s.config.dir + '/' + pathname.substring(1);
+  var fileDir = path.resolve(__dirname , '..' , pathname.substring(1));
 
   fs.stat(fileDir, function(err, stat) {
 
@@ -75,7 +76,7 @@ exports.static = function(s) {
         s.response.writeHead(200, {
           'Cache-Control': 'public, max-age=9000000',
           'Content-Length': stat.size,
-          'Content-Type': mime.lookup(fileDir),
+          'Content-Type': mime.lookup(fileDir)
         });
       });
 

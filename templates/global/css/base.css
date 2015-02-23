@@ -64,6 +64,7 @@ a{
   font-size:28px;
   line-height:14px;
   display:inline;
+  margin-left: 6px;
 }
 .checkbox[disabled] + label > span{
   cursor:default;

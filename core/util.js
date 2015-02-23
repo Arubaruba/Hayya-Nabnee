@@ -1,19 +1,20 @@
 var fs = require('fs');
 var mime = require('mime');
+var path = require('path');
 
 var scanDirRecursively = function(dir, permittedExtensions, handleFile) {
   scanDir(dir, permittedExtensions, handleFile, function(path) {
     scanDirRecursively(path, permittedExtensions, handleFile);
   });
-}
+};
 
 var scanDir = function(dir, permittedExtensions, handleFile, handleDir) {
   var dirContents = fs.readdirSync(dir);
   for (var i = 0, ii = dirContents.length; i < ii; i++) {
-    var path = dir + dirContents[i];
-    var stat = fs.statSync(path);
+    var filePath = path.resolve(dir, dirContents[i]);
+    var stat = fs.statSync(filePath);
     if (stat.isDirectory()) {
-      if (handleDir) handleDir(path + '/');
+      if (handleDir) handleDir(filePath + '/');
     } else {
       var nameParts = dirContents[i].split('.');
       //Take away the last part of the Array, the extension

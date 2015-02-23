@@ -1,20 +1,19 @@
 var async = require('async');
 var fs = require('fs');
-var http = require('http');
-var mongo = require('mongodb');
 var url = require('url');
+var http = require('http');
 var https = require('https');
+var path = require('path');
 
 var log = require('./log');
 var session = require('./session');
-var util = require('./util');
 var config = require('../config.json');
 var database = require('./resources/database');
 var routes = require('./resources/routes');
 var discussion = require('../routes/tools/discussion');
 
 var sslOptions = {
-  pfx: fs.readFileSync(config.dir + '/server.p12'),
+  pfx: fs.readFileSync(path.resolve(__dirname, '../server.p12')),
   passphrase:'Flastirst6142'
 };
 

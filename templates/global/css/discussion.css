@@ -17,7 +17,7 @@
 .post_message textarea[expanded]{
   background:#dfdfdf;
   width: 280px;
-  height:200px;
+  height:100px;
   padding:10px;
   font-size:18px;
 }

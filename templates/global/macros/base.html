@@ -3,7 +3,7 @@
 {% macro limitLength(string, maxLength) %}{{string.substring(0, maxLength - 3)}}{% if string.length > maxLength %}...{% endif %}{% endmacro %}
 {% macro checkBox(id, label, checked, disabled) %}
 {% set checkBoxCount = checkBoxCount + 1 %}
-{% set finalId = (id) ? id : 'auto_checkbox_id_' + checkBoxCount %}
+{% if id %} {% set finalId = id %} {% else %} {% set finalId = 'auto_checkbox_id_' + checkBoxCount %} {% endif %}
 <input {% if checked %} checked {% endif %} {% if disabled %} disabled {% endif %} id="{{finalId}}" class="checkbox" type="checkbox">
 <label for="{{finalId}}">
   <span>
